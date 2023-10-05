@@ -73,125 +73,66 @@
 </nav>
 
     <main class="page main-page">
-        <div class="band">
-    
-    
+        <div class="container blogPost">
+    <div class="row">
+        <div class="col-sm-9 px-md-5">
+            <h2 class="blog-post-title">
+                
+            </h2>
+            <p class="meta">
+                <i class="far fa-clock"></i>
+                2023-10-05 
+            </p>
+            <!-- Content -->
+            
+            <br />
+            <p class="meta">
+                
+            </p>
+        </div>
 
-<div class="item-1">
-  <a href="/2023/10/04/hello-world/" class="post">
-    <div class="thumb" style="background-image: url(/./img/default.jpg);"></div>
-    <article>
-      <h1>
-        Hello World
-      </h1>
-      
-      <span>
-        2023-10-04</span>
-    </article>
-  </a>
-</div>
-    
-    
+        <div class="col-sm-3">
+             
+<span><b> TL;DR</b></span>
+<p>
+	Yet another hexo theme.
+</p>
+<hr />
 
-<div class="item-2">
-  <a href="/2022/11/21/life-after/" class="post">
-    <div class="thumb" style="background-image: url(/./images/life_after.jpg);"></div>
-    <article>
-      <h1>
-        life_after
-      </h1>
-      
-      <p>
-        
-      </p>
-      
-      <span>
-        2022-11-21</span>
-    </article>
-  </a>
-</div>
-    
-    
 
-<div class="item-3">
-  <a href="/2022/11/21/33/" class="post">
-    <div class="thumb" style="background-image: url(/./img/default.jpg);"></div>
-    <article>
-      <h1>
-        222
-      </h1>
-      
-      <p>
-        
-      </p>
-      
-      <span>
-        2022-11-21</span>
-    </article>
-  </a>
-</div>
-    
-    
+<span><b> TL;DR 2</b></span>
+<p>
+	No, not another one :/
+</p>
+<hr />
 
-<div class="item-4">
-  <a href="/2022/11/21/shinning-nikki/" class="post">
-    <div class="thumb" style="background-image: url(/./images/shinning_nikki_cover.png);"></div>
-    <article>
-      <h1>
-        shinning_nikki
-      </h1>
-      
-      <p>
-        
-      </p>
-      
-      <span>
-        2022-11-21</span>
-    </article>
-  </a>
-</div>
-    
-    
+ 
 
-<div class="item-5">
-  <a href="/2022/11/19/Booom/" class="post">
-    <div class="thumb" style="background-image: url(/./images/booom_cover.png);"></div>
-    <article>
-      <h1>
-        Booom
-      </h1>
-      
-      <p>
-        
-      </p>
-      
-      <span>
-        2022-11-19</span>
-    </article>
-  </a>
+        </div>
+    </div>
 </div>
-    
-    
+<!-- Menu fade on scroll -->
+<script>
+    var isScrolling;
+    var prevScrollpos = window.pageYOffset;
+    window.addEventListener(
+        'scroll',
+        function(event) {
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(function() {
+                var currentScrollPos = window.pageYOffset;
+                if (prevScrollpos > currentScrollPos) {
+                    $('#navbar').slideDown();
+                } else {
+                    $('#navbar').slideUp();
+                }
+                prevScrollpos = currentScrollPos;
+            }, 66);
+        },
+        false
+    );
+</script>
 
-<div class="item-6">
-  <a href="/2022/11/17/Exp10sion/" class="post">
-    <div class="thumb" style="background-image: url(/./images/exp10sion_cover.png);"></div>
-    <article>
-      <h1>
-        Exp10sion
-      </h1>
-      
-      <p>
-        
-      </p>
-      
-      <span>
-        2022-11-17</span>
-    </article>
-  </a>
-</div>
-    
-</div>
 
 
     </main>
