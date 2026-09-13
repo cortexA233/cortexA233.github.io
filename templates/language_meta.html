@@ -1,0 +1,9 @@
+{% if site.url -%}
+{% set localized_path = page_path | default('') -%}
+{% set canonical_lang = site.default_lang if missing | default(false) else lang | default(site.default_lang) -%}
+<link rel="canonical" href="{{ site.url }}/{{ canonical_lang }}/{{ localized_path }}">
+{% for l in site.languages if item is not defined or l not in item.missing_langs -%}
+<link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}/{{ l }}/{{ localized_path }}">
+{% endfor -%}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/{{ site.default_lang }}/{{ localized_path }}">
+{% endif -%}

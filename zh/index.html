@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>汪孟翔 · 游戏程序员 · cortexA233</title>
+  <link rel="stylesheet" href="/assets/css/pygments.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=hero-hd-20260912">
+  <link rel="canonical" href="https://cortexa233.github.io/zh/">
+<link rel="alternate" hreflang="zh" href="https://cortexa233.github.io/zh/">
+<link rel="alternate" hreflang="en" href="https://cortexa233.github.io/en/">
+<link rel="alternate" hreflang="ja" href="https://cortexa233.github.io/ja/">
+<link rel="alternate" hreflang="x-default" href="https://cortexa233.github.io/en/">
+
+</head>
+<body class="page-home">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a class="brand" href="/zh/">cortexA233</a>
+        <nav class="lang-switch" aria-label="切换语言">
+          <span class="globe" aria-hidden="true">🌐</span>
+          
+          <a href="/zh/"
+             class="lang active"
+             lang="zh" hreflang="zh" aria-current="page"
+             onclick="try { localStorage.setItem('lang','zh'); } catch (e) {}">中文</a>
+          
+          <a href="/en/"
+             class="lang "
+             lang="en" hreflang="en"
+             onclick="try { localStorage.setItem('lang','en'); } catch (e) {}">English</a>
+          
+          <a href="/ja/"
+             class="lang "
+             lang="ja" hreflang="ja"
+             onclick="try { localStorage.setItem('lang','ja'); } catch (e) {}">日本語</a>
+          
+        </nav>
+      </div>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="/zh/career/" class="">职业经历</a>
+        <a href="/zh/#works" class="">个人作品</a>
+        <a href="/zh/posts/" class="">随笔</a>
+        <a href="/zh/resume/" class="">简历</a>
+        <a href="/zh/about/" class="nav-cta">关于我 About Me</a>
+      </nav>
+    </div>
+  </header>
+  <main class="site-main">
+    
+
+<section class="hero hero-showreel">
+  <div class="home-backdrop" aria-hidden="true">
+    <video id="home-showreel" class="hero-video" autoplay muted loop playsinline preload="none"
+           poster="/assets/img/homepage-showreel-poster.jpg?v=9a88fec9cf70">
+      <source data-src="/assets/video/homepage-showreel.mp4?v=2fb986879175"
+              data-desktop-src="/assets/video/homepage-showreel-desktop.mp4?v=ca4e5d8203b9" type="video/mp4">
+    </video>
+    <span class="hero-video-shade"></span>
+  </div>
+  <div class="hero-content">
+<p class="hero-eyebrow">汪孟翔 · Mengxiang Wang</p>
+    <h1 class="hero-title">Just A Gamer.</h1>
+<p class="hero-role">游戏玩法/系统程序员</p>
+    <p class="hero-sub">
+
+      <span class="hero-summary-line">曾任职于网易游戏、叠纸游戏</span>
+
+      <span class="hero-summary-line">参与《遗忘之海》《明日之后》等作品</span>
+
+      <span class="hero-summary-line">Steam / NS 平台独立游戏 Exp10sion 主程序、游戏设计师</span>
+
+    </p>
+    <div class="hero-actions">
+      <a class="hero-primary" href="#professional">探索我的作品 <span aria-hidden="true">↓</span></a>
+      <a class="hero-resume" href="/zh/resume/">查看简历 <span aria-hidden="true">↗</span></a>
+<a class="hero-resume" href="#contact">联系我 <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <button class="hero-video-toggle" type="button" aria-controls="home-showreel" hidden
+          data-pause-label="暂停视频"
+          data-play-label="播放视频">播放视频</button>
+</section>
+
+<script>
+(() => {
+  const video = document.querySelector('.hero-video');
+  const source = video && video.querySelector('source[data-src]');
+  const toggle = document.querySelector('.hero-video-toggle');
+  if (!video || !source || !toggle) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let manuallyControlled = false;
+
+  const syncToggle = () => {
+    toggle.textContent = video.paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel;
+  };
+  const ensureSource = () => {
+    if (source.src) return;
+    const connection = navigator.connection;
+    const useLightweight = window.matchMedia('(max-width: 900px)').matches ||
+      connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
+    // Pick one rendition when playback starts; resizing must not download both.
+    source.src = useLightweight ? source.dataset.src : source.dataset.desktopSrc;
+    video.load();
+  };
+  const play = () => {
+    ensureSource();
+    video.play().catch(syncToggle);
+  };
+  const loadVideo = () => {
+    if (!motion.matches && !manuallyControlled) play();
+  };
+  toggle.addEventListener('click', () => {
+    manuallyControlled = true;
+    if (video.paused) play();
+    else video.pause();
+  });
+  video.addEventListener('play', syncToggle);
+  video.addEventListener('pause', syncToggle);
+  motion.addEventListener('change', () => { if (motion.matches) video.pause(); });
+  toggle.hidden = false;
+  syncToggle();
+
+  const scheduleLoad = () => {
+    if ('requestIdleCallback' in window) requestIdleCallback(loadVideo, {timeout: 1200});
+    else setTimeout(loadVideo, 0);
+  };
+
+  if (document.readyState === 'complete') scheduleLoad();
+  else window.addEventListener('load', scheduleLoad, {once: true});
+})();
+</script>
+
+<div class="home-content">
+
+<section id="professional" class="professional" aria-labelledby="professional-title">
+  <div class="section-head">
+    <h2 id="professional-title">参与开发</h2>
+    <span class="rule"></span>
+    <a class="home-text-link" href="/zh/career/">完整经历 <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="professional-grid">
+
+
+    <article class="professional-card">
+
+      <div class="professional-cover"><img src="/assets/img/sea-of-remnants-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+
+      <p class="professional-company">网易游戏 · Joker Studio</p>
+      <h3>遗忘之海</h3>
+      <p class="professional-role">高级游戏开发工程师<span>2023.11 – 2025.05</span></p>
+      <ul class="professional-contributions">
+
+        <li>负责全游戏相机平台，统一接口并实现碰撞、惯性与可复用修饰器。</li>
+
+        <li>开发战斗与移动同步，以及供策划使用的编辑、调试工具。</li>
+
+      </ul>
+<p class="professional-tech">C++ · Python · PyQt · Messiah</p>
+      <div class="professional-links">
+        <a class="home-text-link" href="/zh/career/netease/">我的贡献 <span aria-hidden="true">↗</span></a>
+        <a class="home-text-link" href="https://www.seaofremnants.com/">项目官网 <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+
+    <article class="professional-card">
+
+      <div class="professional-cover"><img src="/assets/img/shining-nikki-cover.jpg" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+
+      <p class="professional-company">叠纸游戏 · Papergames</p>
+      <h3>闪耀暖暖</h3>
+      <p class="professional-role">游戏客户端工程师<span>2020.12 – 2023.06</span></p>
+      <ul class="professional-contributions">
+
+        <li>设计八叉树与 BVH 混合空间索引，优化射线查询与碰撞检测。</li>
+
+        <li>开发拍照模式 UI，实现特效与 3D 角色变换的同步。</li>
+
+      </ul>
+<p class="professional-tech">C# · Lua · Unity</p>
+      <div class="professional-links">
+        <a class="home-text-link" href="/zh/career/papergames/">我的贡献 <span aria-hidden="true">↗</span></a>
+        <a class="home-text-link" href="https://nikki4.playpapergames.com/home">项目官网 <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+
+    <article class="professional-card">
+
+      <div class="professional-cover"><img src="/assets/img/lifeafter-cover.jpg" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+
+      <p class="professional-company">网易游戏 · Singularity Studio</p>
+      <h3>明日之后</h3>
+      <p class="professional-role">游戏开发工程师（实习）<span>2020.07 – 2020.09</span></p>
+      <ul class="professional-contributions">
+
+        <li>并行化 Excel 配置导出流程，吞吐量从约 550 表/分钟提高到 1,500 表/分钟。</li>
+
+        <li>添加聊天机器人，监控本地和服务器端的配置流水线。</li>
+
+      </ul>
+<p class="professional-tech">Python · NeoX</p>
+      <div class="professional-links">
+        <a class="home-text-link" href="/zh/career/netease-internship/">我的贡献 <span aria-hidden="true">↗</span></a>
+        <a class="home-text-link" href="https://www.lifeafter.game/">项目官网 <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="works" class="works" aria-label="个人作品">
+
+
+
+  <div class="section-head">
+    <h2>个人作品</h2>
+<span class="section-note">独立游戏与原型</span>
+    <span class="rule"></span>
+  </div>
+
+
+  <article class="featured-work" aria-labelledby="featured-work-title">
+    <div class="featured-cover"><img src="/assets/img/exp10sion-cover.jpg" alt="" loading="lazy" decoding="async" width="960" height="540"></div>
+    <div class="featured-content">
+<p class="featured-kicker">重点作品</p>
+      <h3 id="featured-work-title">Exp10sion</h3>
+<p class="featured-summary">10 秒循环解谜平台跳跃 · Steam / Switch / 网页试玩</p>
+      <p class="work-meta">2023 · unity · platformer</p>
+      <a class="home-text-link" href="/zh/works/exp10sion/">查看项目 <span aria-hidden="true">↗</span></a>
+      <div class="store-buttons">
+
+  <a href="https://www.nintendo.com/us/store/products/10-second-ghost-switch/">Nintendo Switch</a>
+
+  <a href="https://store.steampowered.com/app/2618850/Exp10sion/">Steam</a>
+
+  <a class="secondary" href="https://cortexa233.itch.io/exp10sion">itch.io</a>
+
+</div>
+
+    </div>
+  </article>
+
+
+
+  <div class="works-grid">
+
+    <a class="work-card" href="/zh/works/gacha-seeds/">
+      <div class="work-cover"><img src="/assets/img/gacha-seeds-cover.jpg" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Gacha Seeds</h3>
+<p class="work-summary">第一人称生态种植 · Climate Jam / IndieCade 2026 · Unreal Engine</p>
+      <p class="work-meta">2026 · unreal-engine · first-person · gardening · game-jam <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+    <a class="work-card" href="/zh/works/element-ballance/">
+      <div class="work-cover"><img src="/assets/img/element-ballance-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Element Ballance</h3>
+<p class="work-summary">Ballance 风格的 3D 解谜 · Unity · 网页游玩</p>
+      <p class="work-meta">2026 · unity · puzzle · 3d <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+    <a class="work-card" href="/zh/works/daddy-gaiden/">
+      <div class="work-cover"><img src="/assets/img/daddy-gaiden-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Daddy Gaiden</h3>
+<p class="work-summary">高速动作 Roguelike · Beginners&#39; Jam Winter 2025/6</p>
+      <p class="work-meta">2025 · unity · action · rogue-like <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+    <a class="work-card" href="/zh/works/shoot-your-bodies/">
+      <div class="work-cover"><img src="/assets/img/shoot-your-bodies-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Shoot Your Bodies!</h3>
+<p class="work-summary">2D Roguelite 射击 · BOOOM 2022</p>
+      <p class="work-meta">2022 · unity · shooter · 2d · game-jam <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+    <a class="work-card" href="/zh/works/golden-retriever/">
+      <div class="work-cover"><img src="/assets/img/golden-retriever-cover.gif" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Golden Retriever</h3>
+<p class="work-summary">俯视角剑盾动作 · BOOOM 2023（5 月）· Unity</p>
+      <p class="work-meta">2023 · unity · action · 2d · game-jam <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+  </div>
+
+
+
+
+
+
+</section>
+
+
+<div class="home-notes home-notes-writing">
+
+
+<section class="recent" aria-labelledby="home-posts-title">
+  <div class="section-head"><h2 id="home-posts-title">随笔</h2><span class="rule"></span></div>
+  <ul class="post-list">
+
+    <li class="post-row">
+      <a href="/zh/posts/input-buffering/">
+        <span class="post-date">2024-05-20</span>
+        <span class="post-title">子弹时间里的输入缓存实验</span>
+<span class="post-summary">为什么缓存反而让操作&#34;粘手&#34;。</span>
+      </a>
+    </li>
+
+  </ul>
+  <a class="home-text-link" href="/zh/posts/">全部随笔 <span aria-hidden="true">↗</span></a>
+</section>
+
+</div>
+
+
+<section id="contact" class="home-contact" aria-labelledby="contact-title">
+  <div class="contact-intro">
+    <h2 id="contact-title">联系我</h2>
+    <p>欢迎联系我，交流游戏玩法、系统与开发工具岗位，或探讨游戏项目合作。</p>
+  </div>
+  <div class="contact-actions">
+<a class="contact-email" href="mailto:cortexA233@outlook.com">cortexA233@outlook.com <span aria-hidden="true">↗</span></a>
+    <div class="contact-links">
+<a class="home-text-link" href="https://github.com/cortexA233">GitHub <span aria-hidden="true">↗</span></a>
+<a class="home-text-link" href="https://www.linkedin.com/in/mengxiang-wang-b4b0a4381/">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a class="home-text-link" href="/zh/resume/">查看简历 <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 cortexA233</span>
+      <span class="social">
+        <a href="https://github.com/cortexA233">GitHub</a>
+        <a href="https://www.linkedin.com/in/mengxiang-wang-b4b0a4381/">LinkedIn</a>
+        <a href="mailto:cortexA233@outlook.com">邮箱</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

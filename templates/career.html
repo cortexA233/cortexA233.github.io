@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="post">
+  <header>
+    <div class="post-kicker">{{ site.nav.career[lang] }}</div>
+    <h1>{{ tr.title }}</h1>
+    <p class="post-meta">{% if item.date %}{{ item.date.isoformat() }}{% endif %}{% if item.tags %} · {{ item.tags | join(' ') }}{% endif %}</p>
+  </header>
+  {% if missing %}<p class="lang-notice">{{ notice_text }}</p>{% endif %}
+  <div class="prose">{{ body | safe }}</div>
+</article>
+{% endblock %}

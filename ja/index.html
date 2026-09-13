@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>汪孟翔 · ゲームプログラマー · cortexA233</title>
+  <link rel="stylesheet" href="/assets/css/pygments.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=hero-hd-20260912">
+  <link rel="canonical" href="https://cortexa233.github.io/ja/">
+<link rel="alternate" hreflang="zh" href="https://cortexa233.github.io/zh/">
+<link rel="alternate" hreflang="en" href="https://cortexa233.github.io/en/">
+<link rel="alternate" hreflang="ja" href="https://cortexa233.github.io/ja/">
+<link rel="alternate" hreflang="x-default" href="https://cortexa233.github.io/en/">
+
+</head>
+<body class="page-home">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a class="brand" href="/ja/">cortexA233</a>
+        <nav class="lang-switch" aria-label="言語切り替え">
+          <span class="globe" aria-hidden="true">🌐</span>
+          
+          <a href="/zh/"
+             class="lang "
+             lang="zh" hreflang="zh"
+             onclick="try { localStorage.setItem('lang','zh'); } catch (e) {}">中文</a>
+          
+          <a href="/en/"
+             class="lang "
+             lang="en" hreflang="en"
+             onclick="try { localStorage.setItem('lang','en'); } catch (e) {}">English</a>
+          
+          <a href="/ja/"
+             class="lang active"
+             lang="ja" hreflang="ja" aria-current="page"
+             onclick="try { localStorage.setItem('lang','ja'); } catch (e) {}">日本語</a>
+          
+        </nav>
+      </div>
+      <nav class="main-nav" aria-label="メインナビゲーション">
+        <a href="/ja/career/" class="">経歴</a>
+        <a href="/ja/#works" class="">作品</a>
+        <a href="/ja/posts/" class="">随筆</a>
+        <a href="/ja/resume/" class="">履歴書</a>
+        <a href="/ja/about/" class="nav-cta">About Me</a>
+      </nav>
+    </div>
+  </header>
+  <main class="site-main">
+    
+
+<section class="hero hero-showreel">
+  <div class="home-backdrop" aria-hidden="true">
+    <video id="home-showreel" class="hero-video" autoplay muted loop playsinline preload="none"
+           poster="/assets/img/homepage-showreel-poster.jpg?v=9a88fec9cf70">
+      <source data-src="/assets/video/homepage-showreel.mp4?v=2fb986879175"
+              data-desktop-src="/assets/video/homepage-showreel-desktop.mp4?v=ca4e5d8203b9" type="video/mp4">
+    </video>
+    <span class="hero-video-shade"></span>
+  </div>
+  <div class="hero-content">
+<p class="hero-eyebrow">汪孟翔 · Mengxiang Wang</p>
+    <h1 class="hero-title">Just A Gamer.</h1>
+<p class="hero-role">ゲームプレイ・システムプログラマー</p>
+    <p class="hero-sub">
+
+      <span class="hero-summary-line">NetEase Games、Papergames に在籍。</span>
+
+      <span class="hero-summary-line">『シー オブ レムナンツ』『ライフアフター』などの開発に参加。</span>
+
+      <span class="hero-summary-line">Exp10sion（Steam / NS）のリードプログラマー・ゲームデザイナー。</span>
+
+    </p>
+    <div class="hero-actions">
+      <a class="hero-primary" href="#professional">作品を見る <span aria-hidden="true">↓</span></a>
+      <a class="hero-resume" href="/ja/resume/">履歴書を見る <span aria-hidden="true">↗</span></a>
+<a class="hero-resume" href="#contact">お問い合わせ <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <button class="hero-video-toggle" type="button" aria-controls="home-showreel" hidden
+          data-pause-label="動画を一時停止"
+          data-play-label="動画を再生">動画を再生</button>
+</section>
+
+<script>
+(() => {
+  const video = document.querySelector('.hero-video');
+  const source = video && video.querySelector('source[data-src]');
+  const toggle = document.querySelector('.hero-video-toggle');
+  if (!video || !source || !toggle) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let manuallyControlled = false;
+
+  const syncToggle = () => {
+    toggle.textContent = video.paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel;
+  };
+  const ensureSource = () => {
+    if (source.src) return;
+    const connection = navigator.connection;
+    const useLightweight = window.matchMedia('(max-width: 900px)').matches ||
+      connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
+    // Pick one rendition when playback starts; resizing must not download both.
+    source.src = useLightweight ? source.dataset.src : source.dataset.desktopSrc;
+    video.load();
+  };
+  const play = () => {
+    ensureSource();
+    video.play().catch(syncToggle);
+  };
+  const loadVideo = () => {
+    if (!motion.matches && !manuallyControlled) play();
+  };
+  toggle.addEventListener('click', () => {
+    manuallyControlled = true;
+    if (video.paused) play();
+    else video.pause();
+  });
+  video.addEventListener('play', syncToggle);
+  video.addEventListener('pause', syncToggle);
+  motion.addEventListener('change', () => { if (motion.matches) video.pause(); });
+  toggle.hidden = false;
+  syncToggle();
+
+  const scheduleLoad = () => {
+    if ('requestIdleCallback' in window) requestIdleCallback(loadVideo, {timeout: 1200});
+    else setTimeout(loadVideo, 0);
+  };
+
+  if (document.readyState === 'complete') scheduleLoad();
+  else window.addEventListener('load', scheduleLoad, {once: true});
+})();
+</script>
+
+<div class="home-content">
+
+<section id="professional" class="professional" aria-labelledby="professional-title">
+  <div class="section-head">
+    <h2 id="professional-title">開発参加作品</h2>
+    <span class="rule"></span>
+    <a class="home-text-link" href="/ja/career/">経歴をすべて見る <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="professional-grid">
+
+
+    <article class="professional-card">
+
+      <div class="professional-cover"><img src="/assets/img/sea-of-remnants-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+
+      <p class="professional-company">NetEase Games · Joker Studio</p>
+      <h3>シー オブ レムナンツ</h3>
+      <p class="professional-role">シニアゲーム開発エンジニア<span>2023.11 – 2025.05</span></p>
+      <ul class="professional-contributions">
+
+        <li>ゲーム全体のカメラ基盤を担当。API の統一、衝突処理、慣性、再利用可能な修飾子を実装。</li>
+
+        <li>戦闘・移動のネットワーク同期と、プランナー向けの編集・デバッグツールを開発。</li>
+
+      </ul>
+<p class="professional-tech">C++ · Python · PyQt · Messiah</p>
+      <div class="professional-links">
+        <a class="home-text-link" href="/ja/career/netease/">担当内容を見る <span aria-hidden="true">↗</span></a>
+        <a class="home-text-link" href="https://www.seaofremnants.com/">公式サイト <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+
+    <article class="professional-card">
+
+      <div class="professional-cover"><img src="/assets/img/shining-nikki-cover.jpg" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+
+      <p class="professional-company">Papergames / Infold Games</p>
+      <h3>シャイニングニキ</h3>
+      <p class="professional-role">ゲームクライアントエンジニア<span>2020.12 – 2023.06</span></p>
+      <ul class="professional-contributions">
+
+        <li>八分木と BVH を組み合わせた空間インデックスを設計し、レイ検索と衝突判定を最適化。</li>
+
+        <li>撮影モードの UI を開発し、エフェクトを 3D キャラクターの移動・回転・拡縮と同期。</li>
+
+      </ul>
+<p class="professional-tech">C# · Lua · Unity</p>
+      <div class="professional-links">
+        <a class="home-text-link" href="/ja/career/papergames/">担当内容を見る <span aria-hidden="true">↗</span></a>
+        <a class="home-text-link" href="https://nikki4.playpapergames.com/home">公式サイト <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+
+    <article class="professional-card">
+
+      <div class="professional-cover"><img src="/assets/img/lifeafter-cover.jpg" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+
+      <p class="professional-company">NetEase Games · Singularity Studio</p>
+      <h3>ライフアフター</h3>
+      <p class="professional-role">ゲーム開発エンジニア（インターン）<span>2020.07 – 2020.09</span></p>
+      <ul class="professional-contributions">
+
+        <li>Excel 設定データの変換処理を並列化し、処理量を約 550 テーブル/分から 1,500 テーブル/分へ改善。</li>
+
+        <li>ローカルとサーバー側のパイプラインを監視するチャットボットを追加。</li>
+
+      </ul>
+<p class="professional-tech">Python · NeoX</p>
+      <div class="professional-links">
+        <a class="home-text-link" href="/ja/career/netease-internship/">担当内容を見る <span aria-hidden="true">↗</span></a>
+        <a class="home-text-link" href="https://www.lifeafter.game/">公式サイト <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="works" class="works" aria-label="作品">
+
+
+
+  <div class="section-head">
+    <h2>自主制作</h2>
+<span class="section-note">ゲームとプロトタイプ</span>
+    <span class="rule"></span>
+  </div>
+
+
+  <article class="featured-work" aria-labelledby="featured-work-title">
+    <div class="featured-cover"><img src="/assets/img/exp10sion-cover.jpg" alt="" loading="lazy" decoding="async" width="960" height="540"></div>
+    <div class="featured-content">
+<p class="featured-kicker">注目の作品</p>
+      <h3 id="featured-work-title">Exp10sion</h3>
+<p class="featured-summary">10 秒ループのパズルアクション · Steam / Switch / Web 体験版</p>
+      <p class="work-meta">2023 · unity · platformer</p>
+      <a class="home-text-link" href="/ja/works/exp10sion/">詳細を見る <span aria-hidden="true">↗</span></a>
+      <div class="store-buttons">
+
+  <a href="https://www.nintendo.com/us/store/products/10-second-ghost-switch/">Nintendo Switch</a>
+
+  <a href="https://store.steampowered.com/app/2618850/Exp10sion/">Steam</a>
+
+  <a class="secondary" href="https://cortexa233.itch.io/exp10sion">itch.io</a>
+
+</div>
+
+    </div>
+  </article>
+
+
+
+  <div class="works-grid">
+
+    <a class="work-card" href="/ja/works/gacha-seeds/">
+      <div class="work-cover"><img src="/assets/img/gacha-seeds-cover.jpg" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Gacha Seeds</h3>
+<p class="work-summary">一人称視点の環境再生ガーデニング · Climate Jam / IndieCade 2026 · Unreal Engine</p>
+      <p class="work-meta">2026 · unreal-engine · first-person · gardening · game-jam <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+    <a class="work-card" href="/ja/works/element-ballance/">
+      <div class="work-cover"><img src="/assets/img/element-ballance-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Element Ballance</h3>
+<p class="work-summary">Ballance 風の 3D パズル · Unity · ブラウザー対応</p>
+      <p class="work-meta">2026 · unity · puzzle · 3d <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+    <a class="work-card" href="/ja/works/daddy-gaiden/">
+      <div class="work-cover"><img src="/assets/img/daddy-gaiden-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Daddy Gaiden</h3>
+<p class="work-summary">高速アクション・ローグライク · Beginners&#39; Jam Winter 2025/6</p>
+      <p class="work-meta">2025 · unity · action · rogue-like <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+    <a class="work-card" href="/ja/works/shoot-your-bodies/">
+      <div class="work-cover"><img src="/assets/img/shoot-your-bodies-cover.png" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Shoot Your Bodies!</h3>
+<p class="work-summary">2D ローグライト・シューティング · BOOOM 2022</p>
+      <p class="work-meta">2022 · unity · shooter · 2d · game-jam <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+    <a class="work-card" href="/ja/works/golden-retriever/">
+      <div class="work-cover"><img src="/assets/img/golden-retriever-cover.gif" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">Golden Retriever</h3>
+<p class="work-summary">剣と盾の見下ろし型アクション · BOOOM 2023（5 月）</p>
+      <p class="work-meta">2023 · unity · action · 2d · game-jam <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+
+  </div>
+
+
+
+
+
+
+</section>
+
+
+<div class="home-notes home-notes-writing">
+
+
+<section class="recent" aria-labelledby="home-posts-title">
+  <div class="section-head"><h2 id="home-posts-title">随筆</h2><span class="rule"></span></div>
+  <ul class="post-list">
+
+    <li class="post-row">
+      <a href="/ja/posts/input-buffering/">
+        <span class="post-date">2024-05-20</span>
+        <span class="post-title">バレットタイムの入力バッファ実験</span>
+<span class="post-summary">なぜバッファすると操作が「粘る」のか。</span>
+      </a>
+    </li>
+
+  </ul>
+  <a class="home-text-link" href="/ja/posts/">随筆をすべて読む <span aria-hidden="true">↗</span></a>
+</section>
+
+</div>
+
+
+<section id="contact" class="home-contact" aria-labelledby="contact-title">
+  <div class="contact-intro">
+    <h2 id="contact-title">お問い合わせ</h2>
+    <p>ゲームプレイ・システム・開発ツールに関する採用や、ゲームの共同制作について、お気軽にご連絡ください。</p>
+  </div>
+  <div class="contact-actions">
+<a class="contact-email" href="mailto:cortexA233@outlook.com">cortexA233@outlook.com <span aria-hidden="true">↗</span></a>
+    <div class="contact-links">
+<a class="home-text-link" href="https://github.com/cortexA233">GitHub <span aria-hidden="true">↗</span></a>
+<a class="home-text-link" href="https://www.linkedin.com/in/mengxiang-wang-b4b0a4381/">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a class="home-text-link" href="/ja/resume/">履歴書を見る <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 cortexA233</span>
+      <span class="social">
+        <a href="https://github.com/cortexA233">GitHub</a>
+        <a href="https://www.linkedin.com/in/mengxiang-wang-b4b0a4381/">LinkedIn</a>
+        <a href="mailto:cortexA233@outlook.com">メール</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

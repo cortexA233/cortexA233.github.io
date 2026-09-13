@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="page">
+  <h1>{{ tr.title }}</h1>
+  {% if missing %}<p class="lang-notice">{{ notice_text }}</p>{% endif %}
+  <div class="prose">{{ body | safe }}</div>
+</article>
+{% endblock %}

@@ -1,0 +1,64 @@
+title: cortexA233
+url: https://cortexa233.github.io
+default_lang: en
+languages: [zh, en, ja]
+lang_names: { zh: 中文, en: English, ja: 日本語 }
+ui:
+  language_switch: { zh: 切换语言, en: Choose language, ja: 言語切り替え }
+  main_navigation: { zh: 主导航, en: Main navigation, ja: メインナビゲーション }
+  email: { zh: 邮箱, en: Email, ja: メール }
+nav:
+  career: { zh: 职业经历, en: Experience, ja: 経歴 }
+  works: { zh: 个人作品, en: Works, ja: 作品 }
+  posts: { zh: 随笔, en: Log, ja: 随筆 }
+  resume: { zh: 简历, en: Resume, ja: 履歴書 }
+  about: { zh: 关于我 About Me, en: About Me, ja: About Me }
+work_groups:
+  game: { zh: 个人作品, en: Independent Projects, ja: 自主制作 }
+  other: { zh: 其他, en: Other, ja: その他 }
+hero:
+  title:
+    zh: Just A Gamer.
+    en: Just A Gamer.
+    ja: Just A Gamer.
+  role:
+    zh: 游戏玩法/系统程序员
+    en: Gameplay / Systems Programmer
+    ja: ゲームプレイ・システムプログラマー
+  sub:
+    zh: |-
+      曾任职于网易游戏、叠纸游戏
+      参与《遗忘之海》《明日之后》等作品
+      Steam / NS 平台独立游戏 Exp10sion 主程序、游戏设计师
+    en: |-
+      Previously at NetEase Games and Papergames.
+      Contributed to Sea of Remnants, LifeAfter and other games.
+      Lead programmer and game designer on Exp10sion (Steam / Nintendo Switch).
+    ja: |-
+      NetEase Games、Papergames に在籍。
+      『シー オブ レムナンツ』『ライフアフター』などの開発に参加。
+      Exp10sion（Steam / NS）のリードプログラマー・ゲームデザイナー。
+home:
+  professional_title: { zh: 参与开发, en: Professional Work, ja: 開発参加作品 }
+  view_contributions: { zh: 我的贡献, en: My contributions, ja: 担当内容を見る }
+  official_site: { zh: 项目官网, en: Official website, ja: 公式サイト }
+  eyebrow: { zh: 汪孟翔 · Mengxiang Wang, en: Mengxiang Wang · cortexA233, ja: 汪孟翔 · Mengxiang Wang }
+  page_title: { zh: 汪孟翔 · 游戏程序员 · cortexA233, en: Mengxiang Wang · Game Programmer · cortexA233, ja: 汪孟翔 · ゲームプログラマー · cortexA233 }
+  explore_works: { zh: 探索我的作品, en: Explore my work, ja: 作品を見る }
+  view_resume: { zh: 查看简历, en: View resume, ja: 履歴書を見る }
+  works_note: { zh: 独立游戏与原型, en: Games & prototypes, ja: ゲームとプロトタイプ }
+  featured: { zh: 重点作品, en: Featured project, ja: 注目の作品 }
+  view_project: { zh: 查看项目, en: View project, ja: 詳細を見る }
+  view_career: { zh: 完整经历, en: Full experience, ja: 経歴をすべて見る }
+  view_posts: { zh: 全部随笔, en: All writing, ja: 随筆をすべて読む }
+  pause_video: { zh: 暂停视频, en: Pause video, ja: 動画を一時停止 }
+  play_video: { zh: 播放视频, en: Play video, ja: 動画を再生 }
+  contact_title: { zh: 联系我, en: Get in touch, ja: お問い合わせ }
+  contact_intro:
+    zh: 欢迎联系我，交流游戏玩法、系统与开发工具岗位，或探讨游戏项目合作。
+    en: Get in touch about gameplay, systems and tools programming roles, or collaborating on a game.
+    ja: ゲームプレイ・システム・開発ツールに関する採用や、ゲームの共同制作について、お気軽にご連絡ください。
+social:
+  github: https://github.com/cortexA233
+  mail: cortexA233@outlook.com
+  linkedin: https://www.linkedin.com/in/mengxiang-wang-b4b0a4381/

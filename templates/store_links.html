@@ -1,0 +1,9 @@
+{% macro store_links(links) -%}
+{% if links -%}
+<div class="store-buttons">
+{% for name, url in links.items() %}
+  <a{% if name == 'itch.io' %} class="secondary"{% endif %} href="{{ url }}">{{ name }}</a>
+{% endfor %}
+</div>
+{% endif %}
+{%- endmacro %}

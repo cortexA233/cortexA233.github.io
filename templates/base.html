@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <link rel="stylesheet" href="/assets/css/pygments.css">
+  <link rel="stylesheet" href="/assets/css/style.css{% block style_version %}?v=game-profile-20260912{% endblock %}">
+  {% include "language_meta.html" %}
+</head>
+<body{% if section == 'home' %} class="page-home"{% endif %}>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a class="brand" href="/{{ lang }}/">{{ site.title }}</a>
+        <nav class="lang-switch" aria-label="{{ site.ui.get('language_switch', {}).get(lang, 'Choose language') }}">
+          <span class="globe" aria-hidden="true">🌐</span>
+          {% for l in site.languages %}
+          <a href="/{{ l }}/{{ page_path }}"
+             class="lang {% if l == lang %}active{% endif %}"
+             lang="{{ l }}" hreflang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}
+             onclick="try { localStorage.setItem('lang','{{ l }}'); } catch (e) {}">{{ site.lang_names[l] }}</a>
+          {% endfor %}
+        </nav>
+      </div>
+      <nav class="main-nav" aria-label="{{ site.ui.get('main_navigation', {}).get(lang, 'Main navigation') }}">
+        <a href="/{{ lang }}/career/" class="{% if section == 'career' %}active{% endif %}">{{ site.nav.career[lang] }}</a>
+        <a href="/{{ lang }}/#works" class="{% if section == 'works' %}active{% endif %}">{{ site.nav.works[lang] }}</a>
+        <a href="/{{ lang }}/posts/" class="{% if section == 'posts' %}active{% endif %}">{{ site.nav.posts[lang] }}</a>
+        <a href="/{{ lang }}/resume/" class="{% if section == 'resume' %}active{% endif %}">{{ site.nav.resume[lang] }}</a>
+        <a href="/{{ lang }}/about/" class="nav-cta">{{ site.nav.about[lang] }}</a>
+      </nav>
+    </div>
+  </header>
+  <main class="site-main">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© {{ now_year }} {{ site.title }}</span>
+      <span class="social">
+        {% if site.social.github %}<a href="{{ site.social.github }}">GitHub</a>{% endif %}
+        {% if site.social.linkedin %}<a href="{{ site.social.linkedin }}">LinkedIn</a>{% endif %}
+        {% if site.social.mail %}<a href="mailto:{{ site.social.mail }}">{{ site.ui.get('email', {}).get(lang, 'Email') }}</a>{% endif %}
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

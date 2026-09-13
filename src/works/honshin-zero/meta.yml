@@ -1,0 +1,8 @@
+slug: honshin-zero
+date: 2025-12-01
+cover: /assets/img/honshin-zero-cover.png
+category: game
+tags: [unity, action, 3d, prototype]
+order: 7
+# No longer in My Game Portfolio on itch.io; preserve the existing detail URLs.
+show_on_home: false

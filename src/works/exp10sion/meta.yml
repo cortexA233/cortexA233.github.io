@@ -1,0 +1,11 @@
+slug: exp10sion
+date: 2023-11-01
+cover: /assets/img/exp10sion-cover.jpg
+category: game
+tags: [unity, platformer]
+# Keep first as the homepage featured project (owner preference).
+order: 1
+store_links:
+  Nintendo Switch: https://www.nintendo.com/us/store/products/10-second-ghost-switch/
+  Steam: https://store.steampowered.com/app/2618850/Exp10sion/
+  itch.io: https://cortexa233.itch.io/exp10sion

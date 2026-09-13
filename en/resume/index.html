@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume · cortexA233</title>
+  <link rel="stylesheet" href="/assets/css/pygments.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=game-profile-20260912">
+  <link rel="canonical" href="https://cortexa233.github.io/en/resume/">
+<link rel="alternate" hreflang="zh" href="https://cortexa233.github.io/zh/resume/">
+<link rel="alternate" hreflang="en" href="https://cortexa233.github.io/en/resume/">
+<link rel="alternate" hreflang="ja" href="https://cortexa233.github.io/ja/resume/">
+<link rel="alternate" hreflang="x-default" href="https://cortexa233.github.io/en/resume/">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a class="brand" href="/en/">cortexA233</a>
+        <nav class="lang-switch" aria-label="Choose language">
+          <span class="globe" aria-hidden="true">🌐</span>
+          
+          <a href="/zh/resume/"
+             class="lang "
+             lang="zh" hreflang="zh"
+             onclick="try { localStorage.setItem('lang','zh'); } catch (e) {}">中文</a>
+          
+          <a href="/en/resume/"
+             class="lang active"
+             lang="en" hreflang="en" aria-current="page"
+             onclick="try { localStorage.setItem('lang','en'); } catch (e) {}">English</a>
+          
+          <a href="/ja/resume/"
+             class="lang "
+             lang="ja" hreflang="ja"
+             onclick="try { localStorage.setItem('lang','ja'); } catch (e) {}">日本語</a>
+          
+        </nav>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/en/career/" class="">Experience</a>
+        <a href="/en/#works" class="">Works</a>
+        <a href="/en/posts/" class="">Log</a>
+        <a href="/en/resume/" class="active">Resume</a>
+        <a href="/en/about/" class="nav-cta">About Me</a>
+      </nav>
+    </div>
+  </header>
+  <main class="site-main">
+    
+<article class="page">
+  <h1>Resume</h1>
+  
+  <div class="prose"><p><strong>Mengxiang Wang</strong><br>
+<strong>Gameplay / Systems Programmer</strong><br>
+Game clients · Combat and camera systems · Editor tools</p>
+<p><strong>Email:</strong> <a href="mailto:cortexA233@outlook.com">cortexA233@outlook.com</a><br>
+<strong>GitHub:</strong> <a href="https://github.com/cortexA233">github.com/cortexA233</a><br>
+<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mengxiang-wang-b4b0a4381/">Mengxiang Wang</a><br>
+<strong>Portfolio:</strong> <a href="https://cortexa233.itch.io/">cortexa233.itch.io</a></p>
+<p>Game programmer focused on game clients, combat and camera systems, and editor tools. Developed commercial games at NetEase Games and Papergames; currently works on AI game-development evaluation and 3D generation workflows at Philo Labs. Lead programmer on <strong>Exp10sion</strong>, released on Steam and Nintendo Switch.</p>
+<h2 id="technical-skills">Technical Skills</h2>
+<ul>
+<li><strong>Programming languages:</strong> C#, Python, Lua, C++, GDScript.</li>
+<li><strong>Engineering:</strong> Game clients, combat and camera systems, skill and presentation editors, spatial data structures and performance optimization, automated testing and evaluation.</li>
+<li><strong>Engines and tools:</strong> Unity, Godot, Unreal Engine, Messiah, Three.js, Phaser, Qt/PyQt, IMGUI.</li>
+<li><strong>AI workflows:</strong> Familiar with Codex and Claude Code; combines game-engine MCP integrations, Skills, and automation scripts for batch development, validation, and evaluation.</li>
+<li><strong>DCC software:</strong> Basic knowledge of Maya and its Python scripting workflow.</li>
+<li><strong>Spoken languages:</strong> English (CET-6; TOEFL iBT 102, section scores 28/29/22/23), Japanese (JLPT N1).</li>
+</ul>
+<h2 id="professional-experience">Professional Experience</h2>
+<h3 id="philo-labs-san-francisco-ca-usa">Philo Labs — San Francisco, CA, USA</h3>
+<p><strong>Member of Technical Staff, Intern | July 2025 – Present</strong><br>
+Python, Three.js, RAG, Unity, Godot, GDScript, C#</p>
+<ul>
+<li>Built a <strong>Three.js workflow for agent-generated 3D models and scenes</strong>, using a reference asset library for RAG retrieval and authoring supporting Skills, Evals, and workflow scripts to improve output quality, controllability, and stability.</li>
+<li>Created agentic game-development benchmark tasks and acceptance criteria for <strong>Unity, Unreal Engine, and Godot</strong>. Translated gameplay requirements into scoring rules and completion criteria covering functional correctness, interaction feedback, audiovisual presentation, and stability; collaborated with engineers on agent operation, result collection, and reproducible validation for automated evaluation across models, engines, and versions.</li>
+<li>Analyzed defects, regressions, near-misses, and implementations that exceeded task boundaries or exploited scoring rules; converted failure patterns into reproducible tests and grader rules to improve benchmark discrimination and reliability.</li>
+</ul>
+<h3 id="netease-games-hangzhou-joker-studio-sea-of-remnants">NetEase Games — Hangzhou — Joker Studio — Sea of Remnants</h3>
+<p><strong>Senior Game Development Engineer | November 2023 – May 2025</strong><br>
+Python, Messiah (in-house engine)</p>
+<ul>
+<li>Maintained and developed the game-wide camera system: standardized integration interfaces for other pipelines and node graphs, implemented camera inertia and collision modules, and built camera GM tools for debugging and invoking game logic. Helped other pipelines integrate the camera system and implement camera effects.</li>
+<li>Built designer-facing camera <strong>Modifiers</strong> to manage position, rotation, viewing distance, and FOV consistently, with configurable, reusable effects such as camera movement along tracks and dolly zooms.</li>
+<li>Developed ground-combat features on both server and client: movement synchronization and character positioning on the server; camera presentation, scene loading, and character poses on the client.</li>
+<li>Extended skill-editor keyframes and event nodes, and implemented frame events and designer-facing pseudocode scripting APIs for authoring skills, flow logic, and combat presentation.</li>
+<li>Built a <strong>PyQt and Timeline</strong> combat-presentation editor that previewed content outside combat, reproducing turn-based combat presentation rules so designers and artists could create skill, buff, and cinematic assets efficiently.</li>
+<li>Built an <strong>IMGUI</strong> runtime character-lighting editor to add game-specific lighting configuration capabilities missing from the engine.</li>
+</ul>
+<h3 id="papergames-shanghai-shining-nikki">Papergames — Shanghai — Shining Nikki</h3>
+<p><strong>Game Client Development Engineer | December 2020 – June 2023</strong><br>
+C#, Lua, Unity</p>
+<ul>
+<li>Independently developed multiple <strong>2D/3D minigames</strong> for events and the main story, using new gameplay ideas to strengthen narrative immersion and interactivity.</li>
+<li>Contributed image-enhancement and effects modules to photo editing, including stickers with custom text, effects, and Transform editing; implemented a dual-anchor positioning algorithm to synchronize UGUI effects with a 3D character's position, scale, and rotation.</li>
+<li>Developed low-level Lua components: optimized AABB ray tests and implemented OBB support for arbitrary transforms, OBB/AABB intersections, and ray tests. Designed a hybrid octree/BVH spatial-partitioning strategy for frequent global object queries, making ray tests <strong>2–5× faster than Unity's <code>RaycastAll</code></strong>.</li>
+<li>Organized technical knowledge-sharing sessions on <strong>SDF, TextMesh, and Ray Marching</strong>, and implemented stylized UI text using pregenerated SDF base images.</li>
+</ul>
+<h3 id="netease-games-shanghai-singularity-studio-lifeafter">NetEase Games — Shanghai — Singularity Studio — LifeAfter</h3>
+<p><strong>Game Development Engineer Intern | July 2020 – September 2020</strong><br>
+Python, NeoX (in-house engine)</p>
+<ul>
+<li>Maintained and improved a tool that exported designers' Excel configurations as Python dictionaries; designed parallel export processing to increase throughput from approximately <strong>550 to 1,500 tables per minute</strong>.</li>
+<li>Added features to a <strong>NetEase POPO</strong> chatbot for checking the export tool's status on local machines and servers.</li>
+</ul>
+<h2 id="personal-projects">Personal Projects</h2>
+<h3 id="gacha-seed-ue5-management-simulation-roguelike">Gacha Seed — UE5 Management Simulation + Roguelike</h3>
+<p><strong>Independent Development / Gameplay Systems / 3C Design and Polish | August 2026</strong><br>
+Unreal Engine 5, three-day Game Jam</p>
+<ul>
+<li>Delivered a playable prototype combining management simulation and Roguelike gameplay in <strong>a three-day Game Jam</strong> using UE5.</li>
+<li>Independently implemented the gameplay systems, integrating management and Roguelike mechanics into the core game loop.</li>
+<li>Contributed to <strong>3C (character, camera, controls)</strong> design and polish, iterating on feedback and game feel.</li>
+</ul>
+<h3 id="exp10sion-and-unity-framework-ktoolkit">Exp10sion and Unity Framework KToolkit</h3>
+<p><strong>Lead Programmer / Framework Developer / Project Manager | July 2023 – November 2023</strong><br>
+C#, Unity</p>
+<ul>
+<li>Proposed the core <strong>10-second loop</strong> rule and built the Game Jam prototype levels that became the full game's first chapter; contributed to menu interactions and UI experience design.</li>
+<li>Implemented most of the game as lead programmer and extracted reusable logic into <strong>KToolkit</strong> for subsequent projects.</li>
+<li>Built KToolkit's global event system using event-name enums and delegate mappings, plus a UI framework covering managers, pages, data handling, and page lifecycles. Implemented an extensible <strong>FSM</strong> that binds state components through <code>MonoBehaviour</code> to manage gameplay transitions and lifecycles consistently.</li>
+<li>Helped refine platforming feel, using industry examples, literature, and GDC talks to define movement parameters and implementation guidelines.</li>
+<li>Planned development schedules and controlled scope and level count for a <strong>3–6-person team</strong>; worked with art project management on asset organization, iteration, and standards, adjusting schedules and milestones in weekly meetings.</li>
+<li>Integrated Steam SDK features for statistics, achievements, and leaderboards; helped ship the game on <strong>Steam and Nintendo Switch</strong>, then iterated on player feedback.</li>
+<li>Links: <a href="https://store.steampowered.com/app/2618850/Exp10sion/">Steam</a> · <a href="https://github.com/cortexA233/KToolkit_for_unity">KToolkit on GitHub</a> · <a href="https://www.nintendo.com/us/store/products/10-second-ghost-switch/">Nintendo Switch store</a>.</li>
+</ul>
+<h3 id="daddy-gaiden-fast-paced-2d-action-roguelike-prototype">Daddy Gaiden — Fast-Paced 2D Action Roguelike Prototype</h3>
+<p><strong>Lead Programmer / Combat Systems Developer / Project Manager | December 2025</strong><br>
+Game Jam project</p>
+<ul>
+<li>Created a fast-paced combat experience inspired by <em>Ninja Gaiden 2</em> within a 2D side-scrolling framework, incorporating Roguelike resource management and progression.</li>
+<li>As project creator and combat designer, designed the complete combat mechanics and supporting resource systems; as lead programmer, implemented all gameplay features, focusing on input feedback, combat rhythm, and overall presentation.</li>
+<li>Planned tasks and schedules, coordinated contributors across disciplines, and guided the team to deliver a playable build within the Game Jam.</li>
+<li><a href="https://cortexa233.itch.io/daddy-gaiden">Play on itch.io</a>.</li>
+</ul>
+<h3 id="smalltalker-llm-based-social-simulation-serious-game">SmallTalker — LLM-Based Social Simulation Serious Game</h3>
+<p><strong>Programmer / Technical Artist | December 2025</strong><br>
+Northeastern University research project</p>
+<ul>
+<li>Contributed to interaction flow and experience design for a serious game that trains conversation and social skills in simulated workplace settings.</li>
+<li>Implemented the complete gameplay logic and interactions across multiple scenes, connecting voice input, conversation history, scene state, failure retries, and system feedback into a continuous training loop that supports reviewing past sessions.</li>
+<li>Helped develop <strong>NPC Personas</strong> and dialogue transitions following player interventions; used a shared character graph, transition lines, and intervention feedback to maintain consistency across scenes and control branching transitions.</li>
+<li>Created scene and character shaders and post-processing, and integrated art assets to achieve a hand-drawn visual style.</li>
+</ul>
+<h2 id="open-source-contributions">Open-Source Contributions</h2>
+<h3 id="tiled-cross-platform-cross-engine-game-map-editor">Tiled — Cross-Platform, Cross-Engine Game Map Editor</h3>
+<p><strong>Open-Source Contributor</strong><br>
+C++, Qt</p>
+<ul>
+<li>Contributed maintenance fixes for longstanding issues and small features to improve usability.</li>
+<li>Designed and implemented automatic unloading of old images and cache cleanup to keep memory and cache usage bounded when multiple images were open.</li>
+<li><a href="https://github.com/mapeditor/tiled">Tiled on GitHub</a>.</li>
+</ul>
+<h2 id="education">Education</h2>
+<p><strong>Northeastern University — M.S. in Game Science and Design</strong><br>
+September 2025 – May 2027 (expected)</p>
+<p><strong>Shanghai University — B.Eng. in Communication Engineering</strong><br>
+September 2017 – July 2021</p></div>
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 cortexA233</span>
+      <span class="social">
+        <a href="https://github.com/cortexA233">GitHub</a>
+        <a href="https://www.linkedin.com/in/mengxiang-wang-b4b0a4381/">LinkedIn</a>
+        <a href="mailto:cortexA233@outlook.com">Email</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

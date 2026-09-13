@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% from "store_links.html" import store_links %}
+{% block content %}
+<article class="work">
+  <header>
+    {% if item.cover %}<div class="work-hero-cover" style="background-image:url('{{ item.cover }}')"></div>{% endif %}
+    <h1>{{ tr.title }}</h1>
+    <p class="work-meta">{% if item.date %}{{ item.date.year }}{% endif %}{% if item.tags %} · {{ item.tags | join(' · ') }}{% endif %} · {{ reading_minutes }} min</p>
+  </header>
+  {% if missing %}<p class="lang-notice">{{ notice_text }}</p>{% endif %}
+{% if item.store_links %}  {{ store_links(item.store_links) }}
+{% endif %}  <div class="prose">{{ body | safe }}</div>
+</article>
+{% endblock %}

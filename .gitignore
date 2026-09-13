@@ -1,0 +1,13 @@
+.superpowers/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Private working files and local credentials
+/tmp/
+/.codex_tmp_*.log
+.env
+.env.*
+!.env.example
+/.claude/settings.local.json

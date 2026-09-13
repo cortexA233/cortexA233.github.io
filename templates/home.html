@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% from "store_links.html" import store_links %}
+{% block style_version %}?v=hero-hd-20260912{% endblock %}
+{% block content %}
+{% macro label(key, fallback='') -%}{{ site.home.get(key, {}).get(lang, fallback) }}{%- endmacro %}
+<section class="hero hero-showreel">
+  <div class="home-backdrop" aria-hidden="true">
+    <video id="home-showreel" class="hero-video" autoplay muted loop playsinline preload="none"
+           poster="{{ asset_url('/assets/img/homepage-showreel-poster.jpg') }}">
+      <source data-src="{{ asset_url('/assets/video/homepage-showreel.mp4') }}"
+              data-desktop-src="{{ asset_url('/assets/video/homepage-showreel-desktop.mp4') }}" type="video/mp4">
+    </video>
+    <span class="hero-video-shade"></span>
+  </div>
+  <div class="hero-content">
+{% if label('eyebrow') %}<p class="hero-eyebrow">{{ label('eyebrow') }}</p>{% endif %}
+    <h1 class="hero-title">{{ site.hero.title[lang] }}</h1>
+{% if site.hero.get('role', {}).get(lang) %}<p class="hero-role">{{ site.hero.role[lang] }}</p>{% endif %}
+    <p class="hero-sub">
+{% for line in site.hero.sub[lang].splitlines() %}
+      <span class="hero-summary-line">{{ line }}</span>
+{% endfor %}
+    </p>
+    <div class="hero-actions">
+      <a class="hero-primary" href="#{{ 'professional' if professional_projects else 'works' }}">{{ label('explore_works', site.nav.works[lang]) }} <span aria-hidden="true">↓</span></a>
+      <a class="hero-resume" href="{{ lang_url(lang, 'resume') }}">{{ label('view_resume', site.nav.resume[lang]) }} <span aria-hidden="true">↗</span></a>
+{% if label('contact_title') %}<a class="hero-resume" href="#contact">{{ label('contact_title') }} <span aria-hidden="true">↓</span></a>{% endif %}
+    </div>
+  </div>
+  <button class="hero-video-toggle" type="button" aria-controls="home-showreel" hidden
+          data-pause-label="{{ label('pause_video', 'Pause video') }}"
+          data-play-label="{{ label('play_video', 'Play video') }}">{{ label('play_video', 'Play video') }}</button>
+</section>
+
+<script>
+(() => {
+  const video = document.querySelector('.hero-video');
+  const source = video && video.querySelector('source[data-src]');
+  const toggle = document.querySelector('.hero-video-toggle');
+  if (!video || !source || !toggle) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let manuallyControlled = false;
+
+  const syncToggle = () => {
+    toggle.textContent = video.paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel;
+  };
+  const ensureSource = () => {
+    if (source.src) return;
+    const connection = navigator.connection;
+    const useLightweight = window.matchMedia('(max-width: 900px)').matches ||
+      connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
+    // Pick one rendition when playback starts; resizing must not download both.
+    source.src = useLightweight ? source.dataset.src : source.dataset.desktopSrc;
+    video.load();
+  };
+  const play = () => {
+    ensureSource();
+    video.play().catch(syncToggle);
+  };
+  const loadVideo = () => {
+    if (!motion.matches && !manuallyControlled) play();
+  };
+  toggle.addEventListener('click', () => {
+    manuallyControlled = true;
+    if (video.paused) play();
+    else video.pause();
+  });
+  video.addEventListener('play', syncToggle);
+  video.addEventListener('pause', syncToggle);
+  motion.addEventListener('change', () => { if (motion.matches) video.pause(); });
+  toggle.hidden = false;
+  syncToggle();
+
+  const scheduleLoad = () => {
+    if ('requestIdleCallback' in window) requestIdleCallback(loadVideo, {timeout: 1200});
+    else setTimeout(loadVideo, 0);
+  };
+
+  if (document.readyState === 'complete') scheduleLoad();
+  else window.addEventListener('load', scheduleLoad, {once: true});
+})();
+</script>
+
+<div class="home-content">
+{% if professional_projects %}
+<section id="professional" class="professional" aria-labelledby="professional-title">
+  <div class="section-head">
+    <h2 id="professional-title">{{ label('professional_title', site.nav.career[lang]) }}</h2>
+    <span class="rule"></span>
+    <a class="home-text-link" href="{{ lang_url(lang, 'career') }}">{{ label('view_career', site.nav.career[lang]) }} <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="professional-grid">
+{% for c in professional_projects %}
+{% set project = c.translations[lang].project %}
+    <article class="professional-card">
+{% if c.cover %}
+      <div class="professional-cover"><img src="{{ c.cover }}" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+{% endif %}
+      <p class="professional-company">{{ project.get('company', '') }}</p>
+      <h3>{{ project.get('title', c.translations[lang].title) }}</h3>
+      <p class="professional-role">{{ project.get('role', '') }}<span>{{ project.get('period', '') }}</span></p>
+      <ul class="professional-contributions">
+{% for contribution in project.get('contributions', []) %}
+        <li>{{ contribution }}</li>
+{% endfor %}
+      </ul>
+{% if c.tags %}<p class="professional-tech">{{ c.tags | join(' · ') }}</p>{% endif %}
+      <div class="professional-links">
+        <a class="home-text-link" href="{{ lang_url(lang, 'career', c.slug) }}">{{ label('view_contributions', 'My contributions') }} <span aria-hidden="true">↗</span></a>
+        <a class="home-text-link" href="{{ c.project_url }}">{{ label('official_site', 'Official website') }} <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+{% endfor %}
+  </div>
+</section>
+{% endif %}
+<section id="works" class="works" aria-label="{{ site.nav.works[lang] }}">
+{% for gkey in ['game', 'other'] %}
+{% set group = works | selectattr('category', 'equalto', gkey) | list %}
+{% if group %}
+  <div class="section-head">
+    <h2>{{ site.work_groups[gkey][lang] }}</h2>
+{% if gkey == 'game' and label('works_note') %}<span class="section-note">{{ label('works_note') }}</span>{% endif %}
+    <span class="rule"></span>
+  </div>
+{% if gkey == 'game' %}
+{% set featured = group[0] %}
+  <article class="featured-work" aria-labelledby="featured-work-title">
+    <div class="featured-cover"><img src="{{ featured.cover or '/assets/img/default-cover.png' }}" alt="" loading="lazy" decoding="async" width="960" height="540"></div>
+    <div class="featured-content">
+{% if label('featured') %}<p class="featured-kicker">{{ label('featured') }}</p>{% endif %}
+      <h3 id="featured-work-title">{{ featured.translations[lang].title }}</h3>
+{% if featured.translations[lang].summary %}<p class="featured-summary">{{ featured.translations[lang].summary }}</p>{% endif %}
+      <p class="work-meta">{% if featured.date %}{{ featured.date.year }}{% endif %}{% if featured.tags %} · {{ featured.tags | join(' · ') }}{% endif %}</p>
+      <a class="home-text-link" href="{{ lang_url(lang, 'works', featured.slug) }}">{{ label('view_project', site.nav.works[lang]) }} <span aria-hidden="true">↗</span></a>
+      {{ store_links(featured.store_links) }}
+    </div>
+  </article>
+{% set group = group[1:] %}
+{% endif %}
+{% if group %}
+  <div class="works-grid">
+{% for w in group %}
+    <a class="work-card" href="{{ lang_url(lang, 'works', w.slug) }}">
+      <div class="work-cover"><img src="{{ w.cover or '/assets/img/default-cover.png' }}" alt="" loading="lazy" decoding="async" width="640" height="360"></div>
+      <h3 class="work-title">{{ w.translations[lang].title }}</h3>
+{% if w.translations[lang].summary %}<p class="work-summary">{{ w.translations[lang].summary }}</p>{% endif %}
+      <p class="work-meta">{% if w.date %}{{ w.date.year }}{% endif %}{% if w.tags %} · {{ w.tags | join(' · ') }}{% endif %} <span class="work-arrow" aria-hidden="true">↗</span></p>
+    </a>
+{% endfor %}
+  </div>
+{% endif %}
+{% endif %}
+{% endfor %}
+</section>
+
+{% if careers or recent_posts %}
+<div class="home-notes{% if professional_projects %} home-notes-writing{% endif %}">
+{% if careers and not professional_projects %}
+<section class="home-career" aria-labelledby="home-career-title">
+  <div class="section-head"><h2 id="home-career-title">{{ site.nav.career[lang] }}</h2><span class="rule"></span></div>
+  <ul class="career-preview">
+{% for c in careers %}
+    <li><a href="{{ lang_url(lang, 'career', c.slug) }}">
+      <h3>{{ c.translations[lang].title }}</h3>
+{% if c.translations[lang].summary %}<p>{{ c.translations[lang].summary }}</p>{% endif %}
+    </a></li>
+{% endfor %}
+  </ul>
+  <a class="home-text-link" href="{{ lang_url(lang, 'career') }}">{{ site.home.get('view_career', {}).get(lang, site.nav.career[lang]) }} <span aria-hidden="true">↗</span></a>
+</section>
+{% endif %}
+{% if recent_posts %}
+<section class="recent" aria-labelledby="home-posts-title">
+  <div class="section-head"><h2 id="home-posts-title">{{ site.nav.posts[lang] }}</h2><span class="rule"></span></div>
+  <ul class="post-list">
+{% for p in recent_posts %}
+    <li class="post-row">
+      <a href="{{ lang_url(lang, 'posts', p.slug) }}">
+        <span class="post-date">{% if p.date %}{{ p.date.isoformat() }}{% endif %}</span>
+        <span class="post-title">{{ p.translations[lang].title }}</span>
+{% if p.translations[lang].summary %}<span class="post-summary">{{ p.translations[lang].summary }}</span>{% endif %}
+      </a>
+    </li>
+{% endfor %}
+  </ul>
+  <a class="home-text-link" href="{{ lang_url(lang, 'posts') }}">{{ site.home.get('view_posts', {}).get(lang, site.nav.posts[lang]) }} <span aria-hidden="true">↗</span></a>
+</section>
+{% endif %}
+</div>
+{% endif %}
+{% if label('contact_title') %}
+<section id="contact" class="home-contact" aria-labelledby="contact-title">
+  <div class="contact-intro">
+    <h2 id="contact-title">{{ label('contact_title') }}</h2>
+    <p>{{ label('contact_intro') }}</p>
+  </div>
+  <div class="contact-actions">
+{% if site.social.mail %}<a class="contact-email" href="mailto:{{ site.social.mail }}">{{ site.social.mail }} <span aria-hidden="true">↗</span></a>{% endif %}
+    <div class="contact-links">
+{% if site.social.github %}<a class="home-text-link" href="{{ site.social.github }}">GitHub <span aria-hidden="true">↗</span></a>{% endif %}
+{% if site.social.linkedin %}<a class="home-text-link" href="{{ site.social.linkedin }}">LinkedIn <span aria-hidden="true">↗</span></a>{% endif %}
+      <a class="home-text-link" href="{{ lang_url(lang, 'resume') }}">{{ label('view_resume', site.nav.resume[lang]) }} <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+{% endif %}
+</div>
+{% endblock %}

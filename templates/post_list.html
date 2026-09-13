@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="post-index">
+  <div class="section-head"><h2>{{ site.nav.posts[lang] }}</h2><span class="rule"></span></div>
+  <ul class="post-list">
+    {% for p in posts %}
+    <li class="post-row">
+      <a href="{{ lang_url(lang, 'posts', p.slug) }}">
+        <span class="post-date">{% if p.date %}{{ p.date.isoformat() }}{% endif %}</span>
+        <span class="post-title">{{ p.translations[lang].title }}</span>
+        {% if p.translations[lang].summary %}<span class="post-summary">{{ p.translations[lang].summary }}</span>{% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

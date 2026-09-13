@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ site.default_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  {% include "language_meta.html" %}
+  <script>
+    (function () {
+      var supported = {{ site.languages | tojson }};
+      var def = {{ site.default_lang | tojson }};
+      var lang = null;
+      try { lang = localStorage.getItem('lang'); } catch (e) {}
+      if (supported.indexOf(lang) === -1) {
+        lang = null;
+        var navs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < navs.length; i++) {
+          var code = (navs[i] || '').toLowerCase().split('-')[0];
+          if (supported.indexOf(code) !== -1) { lang = code; break; }
+        }
+      }
+      if (!lang) lang = def;
+      location.replace('/' + lang + '/');
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting… <a href="/{{ site.default_lang }}/">Enter</a></p>
+  <noscript>
+{% for l in site.languages %}
+    <a href="/{{ l }}/" lang="{{ l }}" hreflang="{{ l }}">{{ site.lang_names[l] }}</a>
+{% endfor %}
+  </noscript>
+</body>
+</html>
