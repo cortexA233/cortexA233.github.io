@@ -2,22 +2,27 @@
 project:
   title: LifeAfter
   company: NetEase Games · Singularity Studio
-  role: Game Development Engineer Intern
+  role: Game Tool Engineer Intern
   period: 2020.07 – 2020.09
   contributions:
-    - Parallelized the Excel configuration pipeline, increasing throughput from about 550 to 1,500 tables per minute.
-    - Added chatbot monitoring for local and server-side pipeline runs.
-title: Game Development Engineer Intern — NetEase Games
-summary: Singularity Studio · LifeAfter · 2020.07 – 2020.09
+    - Parallelized Excel-to-Python configuration export, increasing throughput from about 550 to 1,500 tables per minute.
+    - Added internal chatbot status reporting for local and server runs.
+title: Game Tool Engineer Intern — NetEase Games
+summary: Singularity Studio · LifeAfter · Data pipeline tools · 2020.07 – 2020.09
 ---
 
-At **NetEase Games, Singularity Studio**, I worked on configuration-pipeline tooling for **LifeAfter** with Python and the in-house **NeoX** engine.
+At **NetEase Games, Singularity Studio**, I improved configuration export and pipeline monitoring tools for **LifeAfter**.
 
+**Role:** Game Tool Engineer Intern<br>
+**Location:** Shanghai, China<br>
 **Period:** July 2020 – September 2020<br>
-**Technologies:** Python, NeoX
+**Technologies:** C++, Python, NeoX (in-house engine)
 
-## Configuration-pipeline performance
+## Configuration export performance
 
-- Parallelized an **Excel-to-Python configuration pipeline** using multiprocessing.
-- Increased throughput from approximately **550 to 1,500 tables per minute**.
-- Added **chatbot monitoring** for both local and server-side pipeline runs.
+- Maintained a tool that exported designers' **Excel configuration tables as Python dictionaries**.
+- Parallelized export processing, increasing throughput from approximately **550 to 1,500 tables per minute**.
+
+## Pipeline status reporting
+
+- Added internal **NetEase POPO chatbot** features to report export-tool status for both local machines and servers.

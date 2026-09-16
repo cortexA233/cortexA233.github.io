@@ -56,24 +56,26 @@
     <p class="post-meta">2023-11-01 · C++ Python PyQt Messiah</p>
   </header>
   
-  <div class="prose"><p>At <strong>NetEase Games, Joker Studio</strong>, I developed systems and tools for <strong>Sea of Remnants</strong> using C++, Python, PyQt, and the in-house <strong>Messiah</strong> engine.</p>
-<p><strong>Period:</strong> November 2023 – May 2025<br>
-<strong>Technologies:</strong> C++, Python, PyQt, Messiah</p>
-<h2 id="game-wide-camera-platform">Game-wide camera platform</h2>
+  <div class="prose"><p>At <strong>NetEase Games, Joker Studio</strong>, I owned the game-wide camera system and developed ground-combat features and designer tools for <strong>Sea of Remnants</strong>.</p>
+<p><strong>Role:</strong> Senior Game Development Engineer<br>
+<strong>Location:</strong> Hangzhou, China<br>
+<strong>Period:</strong> November 2023 – May 2025<br>
+<strong>Technologies:</strong> C++, Python, Messiah (in-house engine), PyQt, IMGUI</p>
+<h2 id="game-wide-camera-system">Game-wide camera system</h2>
 <ul>
-<li>Owned the design, implementation, and maintenance of the game's camera platform.</li>
-<li>Standardized APIs across pipelines and node graphs.</li>
-<li>Added collision handling, inertia, debug controls, and reusable camera modifiers for designers.</li>
+<li>Owned the design, implementation, and maintenance of the camera system, standardizing APIs across pipelines and node graphs.</li>
+<li>Implemented <strong>camera inertia, collision handling, and debug commands</strong>; supported other teams in integrating the system and creating camera effects.</li>
+<li>Built reusable, designer-facing <strong>modifiers for position, rotation, viewing distance, and FOV</strong>, including track-based camera movement and dolly zooms.</li>
 </ul>
-<h2 id="real-time-combat-and-networking">Real-time combat and networking</h2>
+<h2 id="ground-combat-and-skill-scripting">Ground combat and skill scripting</h2>
 <ul>
-<li>Developed real-time client/server combat and movement replication.</li>
-<li>Optimized data serialization and network protocols, reducing <strong>peak traffic by 97.5% (4 MB to 100 KB)</strong> and supporting a stable, high-concurrency alpha release.</li>
+<li>Developed client/server ground-combat features: <strong>movement replication and character positioning</strong> on the server, and <strong>scene loading, character poses, and camera presentation</strong> on the client.</li>
+<li>Extended skill-editor keyframes and event nodes, and exposed <strong>frame events and designer-facing scripting APIs</strong> for authoring complex skills, flow logic, and combat presentation.</li>
 </ul>
-<h2 id="authoring-and-debugging-tools">Authoring and debugging tools</h2>
+<h2 id="tools-for-design-and-art-teams">Tools for design and art teams</h2>
 <ul>
-<li>Built <strong>PyQt and IMGUI</strong> tools for authoring and debugging combat, cinematics, and character lighting.</li>
-<li>Added keyframes, event nodes, frame events, and scripting APIs for designers.</li>
+<li>Built a <strong>PyQt timeline editor</strong> to author and preview skills, buffs, and cinematics outside combat, reproducing turn-based combat presentation rules.</li>
+<li>Built an <strong>IMGUI runtime character-lighting tool</strong> to support game-specific lighting configuration.</li>
 </ul></div>
 </article>
 
